@@ -66,6 +66,5 @@ jobs:
       - name: Publish OTA update (expo publish / eas update)
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-        run: |
-          npx eas update --branch master --message "Update from CI" --non-interactive
+        run: npx eas update --branch master --message "Update from CI" --non-interactive
       
