@@ -16,7 +16,7 @@ export function ListContent({ title, data }: listContentProps) {
   return (
     <View className="mb-8 space-y-4">
       <View className="mx-4 flex-row justify-between items-center">
-        <Text className="text-white font-bold text-xl mb-2">
+        <Text className="text-white font-semibold text-lg mb-2">
           {data.length > 0 && title}
         </Text>
       </View>
@@ -33,16 +33,10 @@ export function ListContent({ title, data }: listContentProps) {
           >
             <Image
               source={{ uri: image342(item.poster_path) || fallbackImagePost }}
-              style={{ width: width * 0.3, height: height * 0.2 }}
-              className="rounded-md"
+              style={{ width: width * 0.45, height: height * 0.3 }}
+              className="rounded-sm"
             />
-            <Text className="text-neutral-400 text-xs text-center">
-              {(item.title || item.name)
-                ? ((item.title || item.name)?.length && (item.title || item.name)!.length > 10
-                  ? (item.title || item.name)!.slice(0, 17) + "..."
-                  : (item.title || item.name))
-                : ""}
-            </Text>
+          
           </TouchableOpacity>
         ))}
       </ScrollView>

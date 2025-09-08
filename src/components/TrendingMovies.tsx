@@ -18,8 +18,8 @@ export function TrendingMovies({title, data }: TrendingMoviesProps) {
   const renderItem: ListRenderItem<Content> = ({ item }) => <MovieCard item={item} />;
 
   return (
-    <View className="pt-3 mb-8">
-      <Text className="text-white text-xl mx-4 mb-2 font-bold">{title}</Text>
+    <View className="mb-8">
+      <Text className="text-white text-xl mx-4 mb-2 font-semibold">{title}</Text>
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -27,7 +27,7 @@ export function TrendingMovies({title, data }: TrendingMoviesProps) {
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ paddingHorizontal: 16 }}
-        ItemSeparatorComponent={() => <View style={{ width: 16 }} />}
+        ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
       />
     </View>
   );

@@ -4,12 +4,13 @@ import { useEffect, useState } from 'react';
 import { View, Text, Platform, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TrendingMovies } from '../components/TrendingMovies';
-import { fetchPopularTv, fetchTopRatedTv, fetchTrendingTv, fetchUpcomingTv, Content } from '../api/moviedb';
+import { fetchPopularTv, fetchTopRatedTv, fetchTrendingTv, fetchUpcomingTv, fetchAiringTodayTv, Content } from '../api/moviedb';
 import { ListContent } from '../components/ListContent';
 import { Loading } from '../components/Loading';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import "../../global"
 import { Header } from '../components/Header';
+import { get } from 'lodash';
 
 const ios = Platform.OS == "ios";
 
@@ -24,6 +25,7 @@ export function TvShowsScreen() {
     const [popular, setPopular] = useState<Content[]>([]);
     const [topRated, setTopRated] = useState<Content[]>([]);
     const [upcoming, setUpcoming] = useState<Content[]>([]);
+    const [airingToday, setAiringToday] = useState<Content[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
@@ -32,6 +34,7 @@ export function TvShowsScreen() {
         getPopularTv();
         getTopRatedTv();
         getUpcomingTv();
+        getAiringToday();
     }, []);
 
     const getTrendingTv = async () => {
@@ -51,6 +54,10 @@ export function TvShowsScreen() {
         const data = await fetchUpcomingTv() as TvApiResponse;
         if (data && data.results) setUpcoming(data.results);
     };
+    const getAiringToday = async () => {
+        const data = await fetchAiringTodayTv() as TvApiResponse;
+        if (data && data.results) setAiringToday(data.results);
+    }
 
     return (
         <View className="flex-1 bg-neutral-900">
@@ -64,15 +71,17 @@ export function TvShowsScreen() {
                     ) : (
                         <ScrollView
                             showsVerticalScrollIndicator={false}
-                            contentContainerStyle={{ paddingBottom: 50 }}
+                            contentContainerStyle={{ paddingBottom: 50, paddingTop: 10 }}
                         >
+                            <ListContent title={"No ar"} data={upcoming} />
+
                             <TrendingMovies title='Séries em alta' data={trending} />
 
                             <ListContent title={"Séries populares"} data={popular} />
 
                             <ListContent title={"Melhores séries"} data={topRated} />
 
-                            <ListContent title={"No ar"} data={upcoming} />
+                            <ListContent title={"Indo ao ar hoje"} data={airingToday} />
                         </ScrollView>
                     )
                 }

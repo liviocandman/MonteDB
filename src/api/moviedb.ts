@@ -26,6 +26,7 @@ interface ApiCallOptions {
 const apiBaseUrl = "https://api.themoviedb.org/3";
 const trendingMoviesEndpoint = `${apiBaseUrl}/trending/movie/day?language=pt-BR&page=1`;
 const popularMoviesEndpoint = `${apiBaseUrl}/movie/popular?language=pt-BR&page=1`;
+const nowPlayingMoviesEndpoint = `${apiBaseUrl}/movie/now_playing?language=pt-BR&page=1`;
 const topRatedMoviesEndpoint = `${apiBaseUrl}/movie/top_rated?language=pt-BR&page=1`;
 const upcomingMoviesEndpoint = `${apiBaseUrl}/movie/upcoming?language=pt-BR&page=1`;
 const searchMoviesEndpoint = `${apiBaseUrl}/search/movie`;
@@ -72,6 +73,7 @@ const apiCall = async <T = any>({ endpoint, params = {} }: ApiCallOptions): Prom
 // Funções de chamada à API com tipagem explícita para filmes
 export const fetchTrendingMovies = () => apiCall<ContentApiResponse>({ endpoint: trendingMoviesEndpoint });
 export const fetchPopularMovies = () => apiCall<ContentApiResponse>({ endpoint: popularMoviesEndpoint });
+export const fetchNowPlayingMovies = () => apiCall<ContentApiResponse>({ endpoint: nowPlayingMoviesEndpoint });
 export const fetchTopRatedMovies = () => apiCall<ContentApiResponse>({ endpoint: topRatedMoviesEndpoint });
 export const fetchUpcomingMovies = () => apiCall<ContentApiResponse>({ endpoint: upcomingMoviesEndpoint });
 export const fetchTrendingAll = () => apiCall<ContentApiResponse>({ endpoint: trendingAllEndpoint });
@@ -91,6 +93,7 @@ const trendingTvEndpoint = `${apiBaseUrl}/trending/tv/day?language=pt-BR&page=1`
 const popularTvEndpoint = `${apiBaseUrl}/tv/popular?language=pt-BR&page=1`;
 const topRatedTvEndpoint = `${apiBaseUrl}/tv/top_rated?language=pt-BR&page=1`;
 const upcomingTvEndpoint = `${apiBaseUrl}/tv/on_the_air?language=pt-BR&page=1`; // "on_the_air" para séries em exibição
+const airingTodayTvEndpoint = `${apiBaseUrl}/tv/airing_today?language=pt-BR&page=1`;
 const searchTvEndpoint = `${apiBaseUrl}/search/tv`;
 
 // Endpoints dinâmicos para TV Shows
@@ -104,6 +107,7 @@ export const fetchTrendingTv = () => apiCall<ContentApiResponse>({ endpoint: tre
 export const fetchPopularTv = () => apiCall<ContentApiResponse>({ endpoint: popularTvEndpoint });
 export const fetchTopRatedTv = () => apiCall<ContentApiResponse>({ endpoint: topRatedTvEndpoint });
 export const fetchUpcomingTv = () => apiCall<ContentApiResponse>({ endpoint: upcomingTvEndpoint });
+export const fetchAiringTodayTv = () => apiCall<ContentApiResponse>({ endpoint: airingTodayTvEndpoint });
 export const searchTv = (params: Record<string, any>) => apiCall<ContentApiResponse>({ endpoint: searchTvEndpoint, params });
 export const fetchTvDetails = (id: number) => apiCall<Content>({ endpoint: tvDetailsEndpoint(id) });
 export const fetchTvCredits = (id: number) => apiCall<any>({ endpoint: tvCreditsEndpoint(id) });

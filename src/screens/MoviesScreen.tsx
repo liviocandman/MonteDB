@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { View, Platform, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TrendingMovies } from '../components/TrendingMovies';
-import { fetchPopularMovies, fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies, Content } from '../api/moviedb';
+import { fetchPopularMovies, fetchNowPlayingMovies, fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies, Content } from '../api/moviedb';
 import { ListContent } from '../components/ListContent';
 import { Loading } from '../components/Loading';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
@@ -20,6 +20,7 @@ export function MoviesScreen() {
     const navigation = useNavigation<NavigationProp<any>>();
     const [trending, setTrending] = useState<Content[]>([]);
     const [popular, setPopular] = useState<Content[]>([]);
+    const [nowPlaying, setNowPlaying] = useState<Content[]>([]);
     const [topRated, setTopRated] = useState<Content[]>([]);
     const [upcoming, setUpcoming] = useState<Content[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
@@ -28,6 +29,7 @@ export function MoviesScreen() {
         setLoading(true);
         getTrendinMovies();
         getPopularMovies();
+        getNowPlaying();
         getTopRatedMovies();
         getUpcomingMovies();
     }, []);
@@ -41,6 +43,12 @@ const getPopularMovies = async () => {
     const data = await fetchPopularMovies() as MovieApiResponse;
     if (data && data.results) setPopular(data.results);
 };
+
+const getNowPlaying = async () => {
+    const data = await fetchNowPlayingMovies() as MovieApiResponse;
+    if (data && data.results) setNowPlaying(data.results);
+}
+
 const getTopRatedMovies = async () => {
     const data = await fetchTopRatedMovies() as MovieApiResponse;
     if (data && data.results) setTopRated(data.results);
@@ -62,15 +70,19 @@ const getUpcomingMovies = async () => {
                     ) : (
                         <ScrollView
                             showsVerticalScrollIndicator={false}
-                            contentContainerStyle={{ paddingBottom: 50 }}
+                            contentContainerStyle={{ paddingBottom: 50, paddingTop: 10 }}
                         >
-                            <TrendingMovies title='Filmes em alta' data={trending} />
+                            
+                            <ListContent title={"Filmes em cartaz"} data={nowPlaying} />
 
                             <ListContent title={"Filmes populares"} data={popular} />
 
-                            <ListContent title={"Melhores filmes"} data={topRated} />
+                            <TrendingMovies title='Filmes em alta' data={trending} />
+
+                            <ListContent title={"Melhores avaliados"} data={topRated} />
 
                             <ListContent title={"Em Breve"} data={upcoming} />
+
                         </ScrollView>
                     )
                 }

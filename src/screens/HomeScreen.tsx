@@ -69,23 +69,17 @@ export function HomeScreen() {
         ) : (
           <ScrollView
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: 50 }}
+            contentContainerStyle={{ paddingBottom: 50, paddingTop: 10 }}
           >
-            {/* Trending Movies & TV Shows */}
-            <TrendingMovies title='Em alta' data={trendingAll} />
+            <TrendingMovies title='Destaques da semana' data={trendingAll} />
 
-            {/* Popular Movies */}
             <ListContent title={"Filmes Populares"} data={popularMovies} />
 
-            {/* Popular TV Shows */}
             <ListContent title={"Séries Populares"} data={popularTv} />
 
-            {/* Top Rated Movies */}
             <ListContent title={"Melhores Filmes"} data={topRatedMovies} />
 
-            {/* Top Rated TV Shows */}
             <ListContent title={"Melhores Séries"} data={topRatedTv} />
-
           </ScrollView>
         )
       }

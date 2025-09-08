@@ -27,7 +27,6 @@ export function ContentScreen() {
   const [cast, setCast] = useState<CastMember[]>([]);
   const [similar, setSimilar] = useState<Content[]>([]);
   const [videos, setVideos] = useState<any[]>([]);
-  const [isFavourite, setIsFavourite] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
   const route = useRoute<RouteProp<RootStackParamList, 'Content'>>();
@@ -93,9 +92,6 @@ export function ContentScreen() {
       <SafeAreaView className="absolute z-20 w-full flex-row justify-between items-center px-4 mt-3">
         <TouchableOpacity className="rounded-xl p-1 bg-cyan-500 items-center" onPress={() => navigation.goBack()}>
           <Ionicons name='chevron-back' size={25} color="white" />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => setIsFavourite(!isFavourite)}>
-          <Ionicons name='heart' size={35} color={!isFavourite ? "red" : "white"} />
         </TouchableOpacity>
       </SafeAreaView>
 
