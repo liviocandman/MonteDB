@@ -50,10 +50,10 @@ Você pode testar a versão mais recente do aplicativo diretamente pelo **Expo G
 
 ## Demonstração / Screenshots
 <div style="display: flex; gap: 10px;">
-  <img src="./assets/screen-1.png" alt="Tela 1" width="300" />
-  <img src="./assets/screen-2.png" alt="Tela 2" width="300" />
-  <img src="./assets/screen-3.png" alt="Tela 3" width="300" />
-  <img src="./assets/screen-3.png" alt="Tela 3" width="300" />
+  <img src="./assets/screen-1.png" alt="Tela 1" width="250" />
+  <img src="./assets/screen-2.png" alt="Tela 2" width="250" />
+  <img src="./assets/screen-3.png" alt="Tela 3" width="250" />
+  <img src="./assets/screen-3.png" alt="Tela 3" width="250" />
 </div>
 ---
 
