@@ -45,9 +45,8 @@ jobs:
       - name: Run tests
         run: npm test -- --watchAll=false
 
-      - name: Optional: build web (if you use Expo web)
-        if: always()
-        run: npm run build || echo "no web build script found"
+      - name: Build web (optional)
+        run: npm run build:web
 
   publish:
     name: Publish to Expo (OTA) / optional EAS build
