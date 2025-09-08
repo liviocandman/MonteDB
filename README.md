@@ -3,7 +3,7 @@
 
 > App de filmes e séries (React Native + Expo + TypeScript) que consome a TMDb API para exibir informações, trailers e elenco.
 
-![MonteDB (banner)](./assets/icon.png)
+<img src="./assets/icon.png" alt="icon" width="100" height="100" />
 
 ---
 
@@ -49,11 +49,11 @@ Você pode testar a versão mais recente do aplicativo diretamente pelo **Expo G
 ---
 
 ## Demonstração / Screenshots
-
-![screen-1](./assets/screen-1.png)  
-![screen-2](./assets/screen-2.png)
-![screen-3](./assets/screen-3.png)
-![screen-4](./assets/screen-4.png)
+<div style="display: flex; gap: 10px;">
+  <img src="./assets/screen-1.png" alt="Tela 1" width="200" />
+  <img src="./assets/screen-2.png" alt="Tela 2" width="200" />
+  <img src="./assets/screen-3.png" alt="Tela 3" width="200" />
+</div>
 ---
 
 ## Principais funcionalidades
