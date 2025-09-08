@@ -24,6 +24,18 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "12787f66-906e-488a-8bf9-1d93339b3d58"
+      }
+    },
+    "owner": "liviocandman",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/12787f66-906e-488a-8bf9-1d93339b3d58"
     }
   }
 }
