@@ -38,9 +38,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build web (optional)
-        run: npm run build:web
-
   publish:
     name: Publish to Expo (OTA) / optional EAS build
     runs-on: ubuntu-latest
